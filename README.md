@@ -4,6 +4,7 @@
 
 这个项目实现View的任意拖曳。包括自定义的View，以及非自定义View的实现方式。
 
+相关博客：http://blog.csdn.net/mingyueyixi/article/details/70288632
 
 **预览：**
 
