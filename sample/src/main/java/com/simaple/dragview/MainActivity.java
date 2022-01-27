@@ -33,7 +33,8 @@ public class MainActivity extends BaseActivity {
         });
 
         DragViewUtil.registerDragAction(textView);
-        DragViewUtil.registerDragAction(button,3000);//延迟3秒响应拖曳
+        //延迟3秒响应拖曳
+        DragViewUtil.registerDragAction(button,3000);
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override

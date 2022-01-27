@@ -11,8 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 /**
- *自定义的view，能够随意拖动。
- *
+ * 自定义的view，能够随意拖动。
  */
 
 public class DragView extends ImageView {
@@ -64,6 +63,8 @@ public class DragView extends ImageView {
                     break;
                 case MotionEvent.ACTION_CANCEL:
                     setPressed(false);
+                    break;
+                default:
                     break;
             }
             return true;
