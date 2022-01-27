@@ -2,10 +2,16 @@
 
 buildscript {
     repositories {
-        jcenter()
+        // central仓和jcenter仓的聚合仓
+        maven { url "https://maven.aliyun.com/repository/public" }
+        // jcenter不再维护，并入了public
+        // maven{ url "https://maven.aliyun.com/nexus/content/repositories/jcenter" }
+        // maven{ url "https://maven.aliyun.com/repository/central"}
+        maven { url "https://maven.aliyun.com/repository/google" }
+        maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath 'com.android.tools.build:gradle:7.0.3'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -14,7 +20,13 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
+        // central仓和jcenter仓的聚合仓
+        maven { url "https://maven.aliyun.com/repository/public" }
+        // jcenter不再维护，并入了public
+        // maven{ url "https://maven.aliyun.com/nexus/content/repositories/jcenter" }
+        // maven{ url "https://maven.aliyun.com/repository/central"}
+        maven { url "https://maven.aliyun.com/repository/google" }
+        maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
     }
 }
 
