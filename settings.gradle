@@ -1,1 +1,1 @@
-include ':simple', ':dragviewlibrary'
+include ':sample', ':dragviewlibrary'
