@@ -5,8 +5,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import yue.util.DragViewUtil;
-import yue.view.DragView;
+import com.lu.dragview.util.DragViewUtil;
+import com.lu.dragview.view.DragView;
+
 
 public class MainActivity extends BaseActivity {
 
@@ -34,7 +35,7 @@ public class MainActivity extends BaseActivity {
 
         DragViewUtil.registerDragAction(textView);
         //延迟3秒响应拖曳
-        DragViewUtil.registerDragAction(button,3000);
+        DragViewUtil.registerDragAction(button, 3000);
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override

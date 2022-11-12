@@ -1,4 +1,4 @@
-package yue.view;
+package com.lu.dragview.view;
 
 import android.content.Context;
 import android.os.Build;
@@ -59,8 +59,6 @@ public class DragView extends ImageView {
                     }
                     break;
                 case MotionEvent.ACTION_UP:
-                    setPressed(false);
-                    break;
                 case MotionEvent.ACTION_CANCEL:
                     setPressed(false);
                     break;
