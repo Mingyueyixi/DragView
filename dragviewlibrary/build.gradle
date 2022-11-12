@@ -42,16 +42,6 @@ android {
                     version = versionName
                 }
             }
-            repositories {
-                // 下面这部分，不是很清楚加不加，但是最后加上
-                maven {
-                    // change URLs to point to your repos, e.g. http://my.org/repo
-                    def baseUrl = buildDir.getParent()
-                    def releasesRepoUrl = "$baseUrl/repos/releases"
-                    def snapshotsRepoUrl = "$baseUrl/repos/snapshots"
-                    url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
-                }
-            }
         }
     }
 
