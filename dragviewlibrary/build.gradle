@@ -1,5 +1,11 @@
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
+}
+
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
 }
 
 android {
@@ -7,7 +13,7 @@ android {
     buildToolsVersion "31.0.0"
 
     defaultConfig {
-        minSdkVersion 23
+        minSdkVersion 19
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
@@ -21,12 +27,41 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    afterEvaluate {
+        publishing {
+            def versionName = "1.0.0" // 当前版本依赖库版本号，这个jitpack不会使用到，只是我们开发者自己查看
+            publications {
+                // Creates a Maven publication called "release".
+                release(MavenPublication) {
+                    // Applies the component for the release build variant.
+                    from components.release // 表示发布 release（jitpack 都不会使用到）
+
+                    // You can then customize attributes of the publication as shown below.
+                    groupId = 'com.lu' // 这个是依赖库的组 id
+                    artifactId = 'dragview' // 依赖库的名称（jitpack 都不会使用到）
+                    version = versionName
+                }
+            }
+            repositories {
+                // 下面这部分，不是很清楚加不加，但是最后加上
+                maven {
+                    // change URLs to point to your repos, e.g. http://my.org/repo
+                    def baseUrl = buildDir.getParent()
+                    def releasesRepoUrl = "$baseUrl/repos/releases"
+                    def snapshotsRepoUrl = "$baseUrl/repos/snapshots"
+                    url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+                }
+            }
+        }
+    }
+
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.annotation:annotation:1.3.0'
-    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
 
     testImplementation 'junit:junit:4.+'
